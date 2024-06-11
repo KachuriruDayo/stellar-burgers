@@ -6,7 +6,12 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 
-const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
+const rootReducer = () => {
+  // feature1: reducer1,
+  // feature2: reducer2,
+  // feature3: reducer3,
+  // feature4: reducer4,
+}; // Заменить на импорт настоящего редьюсера
 
 const store = configureStore({
   reducer: rootReducer,
