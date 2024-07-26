@@ -99,7 +99,7 @@ export const getOrdersApi = () =>
     return Promise.reject(data);
   });
 
-type TNewOrderResponse = TServerResponse<{
+export type TNewOrderResponse = TServerResponse<{
   order: TOrder;
   name: string;
 }>;
@@ -129,7 +129,12 @@ export const getOrderByNumberApi = (number: number) =>
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then((res) => checkResponse<TOrderResponse>(res));
+  })
+    .then((res) => checkResponse<TOrderResponse>(res))
+    .then((data) => {
+      if (data.success) return data.orders;
+      return Promise.reject(data);
+    });
 
 export type TRegisterData = {
   email: string;

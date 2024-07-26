@@ -37,7 +37,7 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
       </div>
     )}
     <ul className={styles.elements}>
-      {constructorItems.ingredients.length > 0 ? (
+      {constructorItems.ingredients.length ? (
         constructorItems.ingredients.map(
           (item: TConstructorIngredient, index: number) => (
             <BurgerConstructorElement
@@ -94,10 +94,7 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
     )}
 
     {orderModalData && (
-      <Modal
-        onClose={closeOrderModal}
-        title={orderRequest ? 'Оформляем заказ...' : ''}
-      >
+      <Modal onClose={closeOrderModal} title={''}>
         <OrderDetailsUI orderNumber={orderModalData.number} />
       </Modal>
     )}
