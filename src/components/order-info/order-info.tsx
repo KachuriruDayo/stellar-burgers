@@ -10,7 +10,7 @@ import { TIngredient, TOrder } from '@utils-types';
 
 export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
-  let orderNumber = useParams<{ number: string }>();
+  const orderNumber = useParams<{ number: string }>();
   useEffect(() => {
     dispatch(getOrderByNumber(Number(orderNumber.number)));
   }, []);

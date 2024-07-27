@@ -8,23 +8,12 @@ import {
   loginUserApi
 } from '@api';
 
-export const getUser = createAsyncThunk('user/getData', async () =>
-  getUserApi()
-);
+export const getUser = createAsyncThunk('user/getData', getUserApi);
 
-export const updateUser = createAsyncThunk(
-  'user/updateData',
-  async (data: TRegisterData) => updateUserApi(data)
-);
+export const updateUser = createAsyncThunk('user/updateData', updateUserApi);
 
-export const registerUser = createAsyncThunk(
-  'user/register',
-  async (data: TRegisterData) => registerUserApi(data)
-);
+export const registerUser = createAsyncThunk('user/register', registerUserApi);
 
-export const loginUser = createAsyncThunk(
-  'user/login',
-  async (data: TLoginData) => loginUserApi(data)
-);
+export const loginUser = createAsyncThunk('user/login', loginUserApi);
 
-export const logout = createAsyncThunk('user/logout', async () => logoutApi());
+export const logout = createAsyncThunk('user/logout', logoutApi);

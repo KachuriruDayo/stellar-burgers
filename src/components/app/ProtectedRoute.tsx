@@ -17,7 +17,7 @@ export const ProtectedRoute = ({ onlyUnAuth, children }: TProps) => {
   if (onlyUnAuth && user) {
     console.log('redirect from login to page');
     const from = localStorage.state?.from || { pathname: '/' };
-    const backgroundLocation = location.state?.from?.backgroundLocation || null;
+    const backgroundLocation = location.state?.background || null;
     return <Navigate replace to={from} state={{ backgroundLocation }} />;
   }
 

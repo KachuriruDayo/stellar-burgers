@@ -8,7 +8,7 @@ import { Preloader } from '../../components/ui/preloader/preloader';
 import { FC } from 'react';
 
 export const ConstructorPage: FC = () => {
-  let data = useSelector(getIngredientsSelector);
+  const data = useSelector(getIngredientsSelector);
   const isLoading = data.requestStatus !== 'Success' ? true : false;
 
   return (

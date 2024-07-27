@@ -39,10 +39,11 @@ export const BurgerConstructor: FC = () => {
     }
 
     const newOrder: string[] = [];
-    newOrder.push(constructorItems.bun._id, constructorItems.bun._id);
+    newOrder.push(constructorItems.bun._id);
     constructorItems.ingredients.map((ingredient) => {
       newOrder.push(ingredient._id);
     });
+    newOrder.push(constructorItems.bun._id);
     setOrderRequest(true);
 
     orderBurgerApi(newOrder)

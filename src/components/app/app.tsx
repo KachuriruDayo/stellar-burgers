@@ -27,7 +27,7 @@ const App = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  const backgroundLocation = location.state?.from?.backgroundLocation || null;
+  const backgroundLocation = location.state?.background || null;
   const userData = useSelector(getUserSelector);
 
   useEffect(() => {
@@ -54,22 +54,6 @@ const App = () => {
         <Route path='/' element={<AppHeader />}>
           <Route index element={<ConstructorPage />} />
           <Route path='feed' element={<Feed />} />
-          <Route
-            path='feed/:number'
-            element={
-              <Modal title='Заказ' onClose={onClose}>
-                <OrderInfo />
-              </Modal>
-            }
-          />
-          <Route
-            path='ingredients/:id'
-            element={
-              <Modal title='Ингредиент' onClose={onClose}>
-                <IngredientDetails />
-              </Modal>
-            }
-          />
           <Route
             path='login'
             element={
@@ -118,22 +102,12 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route
-            path='profile/orders/:number'
-            element={
-              <ProtectedRoute>
-                <Modal title='Заказ' onClose={onClose}>
-                  <OrderInfo />
-                </Modal>
-              </ProtectedRoute>
-            }
-          />
         </Route>
       </Routes>
       {backgroundLocation && (
         <Routes>
           <Route
-            path='feed/:number'
+            path='/feed/:number'
             element={
               <Modal title='Заказ' onClose={onClose}>
                 <OrderInfo />
@@ -141,7 +115,7 @@ const App = () => {
             }
           />
           <Route
-            path='ingredients/:id'
+            path='/ingredients/:id'
             element={
               <Modal title='Ингредиент' onClose={onClose}>
                 <IngredientDetails />
@@ -149,7 +123,7 @@ const App = () => {
             }
           />
           <Route
-            path='profile/orders/:number'
+            path='/profile/orders/:number'
             element={
               <ProtectedRoute>
                 <Modal title='Заказ' onClose={onClose}>
