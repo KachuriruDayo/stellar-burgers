@@ -16,6 +16,11 @@ export type TConstructorIngredient = TIngredient & {
   id: string;
 };
 
+export type TMoveIngredient = {
+  direction: string;
+  ingredient: TConstructorIngredient;
+};
+
 export type TOrder = {
   _id: string;
   status: string;
@@ -38,3 +43,10 @@ export type TUser = {
 };
 
 export type TTabMode = 'bun' | 'sauce' | 'main';
+
+export const enum RequestStatus {
+  Idle = 'Idle',
+  Loading = 'Loading',
+  Success = 'Success',
+  Failed = 'Failed'
+}
