@@ -1,4 +1,3 @@
-import { TRegisterData, TLoginData } from '@api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   logoutApi,
@@ -6,7 +5,7 @@ import {
   getUserApi,
   registerUserApi,
   loginUserApi
-} from '@api';
+} from '../../utils/burger-api';
 
 export const getUser = createAsyncThunk('user/getData', getUserApi);
 

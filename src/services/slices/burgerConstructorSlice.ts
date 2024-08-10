@@ -3,7 +3,7 @@ import {
   TIngredient,
   TConstructorIngredient,
   TMoveIngredient
-} from '@utils-types';
+} from '../../utils/types';
 import { v4 as uuid } from 'uuid';
 
 type TIngredientsState = {

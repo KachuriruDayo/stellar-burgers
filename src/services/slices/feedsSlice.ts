@@ -1,7 +1,6 @@
 import { getFeeds } from './../thunk/feeds';
 import { createSlice } from '@reduxjs/toolkit';
-import { RequestStatus } from '@utils-types';
-import { TOrdersData } from '@utils-types';
+import { RequestStatus, TOrdersData } from '../../utils/types';
 
 type TFeedsState = {
   data: TOrdersData;

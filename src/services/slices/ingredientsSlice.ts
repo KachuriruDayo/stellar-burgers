@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getIngredients } from '../thunk/ingredients';
-import { RequestStatus } from '@utils-types';
-import { TIngredient } from '@utils-types';
+import { RequestStatus, TIngredient } from '../../utils/types';
 
 type TIngredientsState = {
   ingredients: Array<TIngredient>;

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getOrders, getOrderByNumber } from '../thunk/order';
-import { TOrder } from '@utils-types';
+import { TOrder } from '../../utils/types';
 
 type TOrderState = {
   userOrders: TOrder[];

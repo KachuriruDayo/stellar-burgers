@@ -6,21 +6,19 @@ import {
   loginUser
 } from './../thunk/user';
 import { setCookie, deleteCookie } from '../../utils/cookie';
-import { TUser, TOrder } from './../../utils/types';
+import { TUser } from './../../utils/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 type TUserData = {
   userData: TUser;
-  orders: TOrder[];
   isAuth: boolean;
 };
 
-let initialState: TUserData = {
+const initialState: TUserData = {
   userData: {
     name: '',
     email: ''
   },
-  orders: [],
   isAuth: false
 };
 
