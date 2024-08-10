@@ -31,7 +31,10 @@ export const feedsSlice = createSlice({
       .addCase(getFeeds.fulfilled, (state, action) => {
         state.requestStatus = RequestStatus.Success;
         state.data = action.payload;
-      });
+      })
+      .addCase(getFeeds.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
+      })
   }
 });
 

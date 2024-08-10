@@ -1,6 +1,7 @@
-import { feedsSlice } from '../slices/feedsSlice';
-import { getFeeds } from '../thunk/feeds';
-import { RequestStatus } from '../../utils/types';
+import { feedsSlice } from '../feedsSlice';
+import { getFeeds } from '../../thunk/feeds';
+import { RequestStatus } from '../../../utils/types';
+import { error } from 'console';
 
 const initialState = {
   data: {
@@ -85,6 +86,28 @@ describe('test feedsSlice',() => {
     );
 
     expect(actualState).toEqual(mockReferenceState);
+  });
+
+  it('should set Failed to RequestStatus when rejected is dispatch',() => {
+
+    const referenceState = {
+      data: {
+        orders: [],
+        total: 0,
+        totalToday: 0
+      },
+      requestStatus: RequestStatus.Failed
+    };
+
+    const actualState = feedsReducer(
+      {
+        ...initialState,
+        requestStatus: RequestStatus.Loading
+      },
+      getFeeds.rejected(Error('403'),'')
+    );
+
+    expect(actualState).toEqual(referenceState);
   });
 });
 

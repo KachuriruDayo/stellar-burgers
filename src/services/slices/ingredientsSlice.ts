@@ -27,7 +27,10 @@ export const ingredientsSlice = createSlice({
       .addCase(getIngredients.fulfilled, (state, action) => {
         state.requestStatus = RequestStatus.Success;
         state.ingredients = action.payload;
-      });
+      })
+      .addCase(getIngredients.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
+      })
   }
 });
 

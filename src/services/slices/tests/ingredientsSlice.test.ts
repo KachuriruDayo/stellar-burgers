@@ -1,6 +1,6 @@
-import { getIngredients } from './../thunk/ingredients';
-import { ingredientsSlice } from '../slices/ingredientsSlice';
-import { RequestStatus } from '../../utils/types';
+import { getIngredients } from '../../thunk/ingredients';
+import { ingredientsSlice } from '../ingredientsSlice';
+import { RequestStatus } from '../../../utils/types';
 
 const ingredientsReducer = ingredientsSlice.reducer;
 
@@ -100,5 +100,23 @@ describe('test ingredientsSlice',() => {
     );
 
     expect(actualState).toEqual(mockReferenceState);
+  });
+
+  it('should set Failed to RequestStatus when rejected is dispatch',() => {
+
+    const referenceState = {
+      ingredients: [],
+      requestStatus: RequestStatus.Failed
+    };
+
+    const actualState = ingredientsReducer(
+      {
+        ...initialState,
+        requestStatus: RequestStatus.Loading
+      },
+      getIngredients.rejected(Error('403'),'')
+    );
+
+    expect(actualState).toEqual(referenceState);
   });
 });

@@ -4,7 +4,7 @@ import {
   deleteElement,
   resetConstructor,
   constructorSlice
-} from "../slices/burgerConstructorSlice";
+} from "../burgerConstructorSlice";
 
 const constructorReducer = constructorSlice.reducer;
 
