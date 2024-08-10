@@ -12,7 +12,7 @@ describe('correctly work constructor', function() {
         .contains('ингредиент 1')
         .should('exist')
       cy.get(`[data-cy='constructor-bun-2']`)
-        .contains('ингредиент 2')
+        .contains('ингредиент 1')
         .should('exist')
     });
 
