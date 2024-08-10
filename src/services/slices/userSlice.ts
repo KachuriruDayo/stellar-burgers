@@ -92,7 +92,7 @@ export const userSlice = createSlice({
       })
       .addCase(logout.pending, (state) => {
         state.requestStatus = RequestStatus.Loading;
-      })
+      });
   }
 });
 

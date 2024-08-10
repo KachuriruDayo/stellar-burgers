@@ -30,7 +30,7 @@ export const ingredientsSlice = createSlice({
       })
       .addCase(getIngredients.rejected, (state) => {
         state.requestStatus = RequestStatus.Failed;
-      })
+      });
   }
 });
 

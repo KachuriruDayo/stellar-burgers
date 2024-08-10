@@ -34,7 +34,7 @@ export const feedsSlice = createSlice({
       })
       .addCase(getFeeds.rejected, (state) => {
         state.requestStatus = RequestStatus.Failed;
-      })
+      });
   }
 });
 

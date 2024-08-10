@@ -27,27 +27,27 @@ export const ordersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getOrders.pending, (state) => {
-        state.userOrdersRequest = RequestStatus.Loading
+        state.userOrdersRequest = RequestStatus.Loading;
       })
       .addCase(getOrders.fulfilled, (state, action) => {
         state.userOrders = action.payload;
-        state.userOrdersRequest = RequestStatus.Success
+        state.userOrdersRequest = RequestStatus.Success;
       })
       .addCase(getOrders.rejected, (state) => {
-        state.userOrdersRequest = RequestStatus.Failed
+        state.userOrdersRequest = RequestStatus.Failed;
       })
       .addCase(getOrderByNumber.pending, (state) => {
-        state.orderByNumRequest = RequestStatus.Loading
+        state.orderByNumRequest = RequestStatus.Loading;
         state.orderByNum = undefined;
       })
       .addCase(getOrderByNumber.fulfilled, (state, action) => {
         state.orderByNum = action.payload.find(function (order) {
           return order;
         });
-        state.orderByNumRequest = RequestStatus.Success
+        state.orderByNumRequest = RequestStatus.Success;
       })
       .addCase(getOrderByNumber.rejected, (state) => {
-        state.orderByNumRequest = RequestStatus.Failed
+        state.orderByNumRequest = RequestStatus.Failed;
       });
   }
 });

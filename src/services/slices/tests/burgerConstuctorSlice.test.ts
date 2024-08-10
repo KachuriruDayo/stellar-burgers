@@ -4,7 +4,7 @@ import {
   deleteElement,
   resetConstructor,
   constructorSlice
-} from "../burgerConstructorSlice";
+} from '../burgerConstructorSlice';
 
 const constructorReducer = constructorSlice.reducer;
 
@@ -25,7 +25,7 @@ const mockAddIngredient = {
   image: 'bunImage',
   image_large: 'largeBunImage',
   image_mobile: 'mobiBunImage'
-}
+};
 
 const mockAddConstructorIngredient = {
   id: 'testId',
@@ -40,7 +40,7 @@ const mockAddConstructorIngredient = {
   image: 'bunImage',
   image_large: 'largeBunImage',
   image_mobile: 'mobiBunImage'
-}
+};
 
 type TIngredientWithId = {
   id: string | undefined;
@@ -55,7 +55,7 @@ type TIngredientWithId = {
   image: string;
   image_large: string;
   image_mobile: string;
-}
+};
 
 const mockAddIngredientWithId: TIngredientWithId = {
   id: 'testId',
@@ -70,7 +70,7 @@ const mockAddIngredientWithId: TIngredientWithId = {
   image: 'bunImage',
   image_large: 'largeBunImage',
   image_mobile: 'mobiBunImage'
-}
+};
 
 const mockArrConstructorIngredients = [
   {
@@ -209,7 +209,7 @@ const mockMoveUpIngredient = {
     image_large: 'largeSouceImage',
     image_mobile: 'mobiSouceImage'
   }
-}
+};
 
 const mockMoveDownIngredient = {
   direction: 'down',
@@ -227,7 +227,7 @@ const mockMoveDownIngredient = {
     image_large: 'largeSouceImage',
     image_mobile: 'mobiSouceImage'
   }
-}
+};
 
 const mockDelIngredient = {
   id: '1',
@@ -242,23 +242,22 @@ const mockDelIngredient = {
   image: 'mushroomImage',
   image_large: 'largeMushroomImage',
   image_mobile: 'mobiMushroomImage'
-}
+};
 
-describe('test constructorSlice',() => {
-
-  it('should add ingredient in constructor with unique id',() => {
+describe('test constructorSlice', () => {
+  it('should add ingredient in constructor with unique id', () => {
     let referenceState = {
       bun: mockAddIngredientWithId,
       ingredients: []
-    }
+    };
 
     const actualState = constructorReducer(
       {
         ...initialState
       },
       addToConstructor(mockAddIngredient)
-    )
-    
+    );
+
     expect(actualState.bun).toHaveProperty('id');
 
     referenceState.bun.id = actualState.bun?.id;
@@ -266,14 +265,14 @@ describe('test constructorSlice',() => {
     expect(actualState).toEqual(referenceState);
   });
 
-  it('should move ingrediet up and down in state',() => {
+  it('should move ingrediet up and down in state', () => {
     const actualStateUp = constructorReducer(
       {
         ...initialState,
         ingredients: mockArrConstructorIngredients
       },
       moveElement(mockMoveUpIngredient)
-    )
+    );
 
     const actualStateDown = constructorReducer(
       {
@@ -281,33 +280,37 @@ describe('test constructorSlice',() => {
         ingredients: mockEditUpArrConstructorIngredients
       },
       moveElement(mockMoveDownIngredient)
-    )
+    );
 
-    expect(actualStateUp.ingredients).toEqual(mockEditUpArrConstructorIngredients);
+    expect(actualStateUp.ingredients).toEqual(
+      mockEditUpArrConstructorIngredients
+    );
     expect(actualStateDown.ingredients).toEqual(mockArrConstructorIngredients);
   });
 
-  it('should delete one ingredient from state',() => {
+  it('should delete one ingredient from state', () => {
     const actualState = constructorReducer(
       {
         ...initialState,
         ingredients: mockArrConstructorIngredients
       },
       deleteElement(mockDelIngredient)
-    )
-    
-    expect(actualState.ingredients).toEqual(mockOneDelConstructorIngredientsArr);
+    );
+
+    expect(actualState.ingredients).toEqual(
+      mockOneDelConstructorIngredientsArr
+    );
   });
 
-  it('should reset state date to default values',() => {
+  it('should reset state date to default values', () => {
     const actualState = constructorReducer(
       {
         bun: mockAddConstructorIngredient,
         ingredients: mockArrConstructorIngredients
       },
       resetConstructor()
-    )
-    
+    );
+
     expect(actualState).toEqual(initialState);
   });
-})
+});

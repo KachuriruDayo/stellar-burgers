@@ -70,10 +70,8 @@ const mockReferenceState = {
   requestStatus: RequestStatus.Success
 };
 
-describe('test ingredientsSlice',() => {
-
-  it('should set Loading to RequestStatus when pending is dispatch',() => {
-
+describe('test ingredientsSlice', () => {
+  it('should set Loading to RequestStatus when pending is dispatch', () => {
     const referenceState = {
       ingredients: [],
       requestStatus: RequestStatus.Loading
@@ -89,8 +87,7 @@ describe('test ingredientsSlice',() => {
     expect(actualState).toEqual(referenceState);
   });
 
-  it('should set Success to RequestStatus and add ingredients in data when fulfilled is dispatch',() => {
-
+  it('should set Success to RequestStatus and add ingredients in data when fulfilled is dispatch', () => {
     const actualState = ingredientsReducer(
       {
         ...initialState,
@@ -102,8 +99,7 @@ describe('test ingredientsSlice',() => {
     expect(actualState).toEqual(mockReferenceState);
   });
 
-  it('should set Failed to RequestStatus when rejected is dispatch',() => {
-
+  it('should set Failed to RequestStatus when rejected is dispatch', () => {
     const referenceState = {
       ingredients: [],
       requestStatus: RequestStatus.Failed
@@ -114,7 +110,7 @@ describe('test ingredientsSlice',() => {
         ...initialState,
         requestStatus: RequestStatus.Loading
       },
-      getIngredients.rejected(Error('403'),'')
+      getIngredients.rejected(Error('403'), '')
     );
 
     expect(actualState).toEqual(referenceState);
