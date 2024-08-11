@@ -12,7 +12,8 @@ export const BurgerConstructorElementUI: FC<BurgerConstructorElementUIProps> =
       totalItems,
       handleMoveUp,
       handleMoveDown,
-      handleClose
+      handleClose,
+      ...datcy
     }) => (
       <li className={`${styles.element} mb-4 mr-2`}>
         <MoveButton
@@ -21,7 +22,7 @@ export const BurgerConstructorElementUI: FC<BurgerConstructorElementUIProps> =
           isUpDisabled={index === 0}
           isDownDisabled={index === totalItems - 1}
         />
-        <div className={`${styles.element_fullwidth} ml-2`}>
+        <div className={`${styles.element_fullwidth} ml-2`} {...datcy}>
           <ConstructorElement
             text={ingredient.name}
             price={ingredient.price}
