@@ -1,13 +1,8 @@
 import { getIngredients } from '../../thunk/ingredients';
-import { ingredientsSlice } from '../ingredientsSlice';
+import { ingredientsSlice, initialState } from '../ingredientsSlice';
 import { RequestStatus } from '../../../utils/types';
 
 const ingredientsReducer = ingredientsSlice.reducer;
-
-const initialState = {
-  ingredients: [],
-  requestStatus: RequestStatus.Idle
-};
 
 const mockRequestData = [
   {

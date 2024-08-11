@@ -7,7 +7,7 @@ type TFeedsState = {
   requestStatus: RequestStatus;
 };
 
-const initialState: TFeedsState = {
+export const initialState: TFeedsState = {
   data: {
     orders: [],
     total: 0,

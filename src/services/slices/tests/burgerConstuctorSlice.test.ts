@@ -3,15 +3,11 @@ import {
   moveElement,
   deleteElement,
   resetConstructor,
-  constructorSlice
+  constructorSlice,
+  initialState
 } from '../burgerConstructorSlice';
 
 const constructorReducer = constructorSlice.reducer;
-
-const initialState = {
-  bun: null,
-  ingredients: []
-};
 
 const mockAddIngredient = {
   _id: '32bef',

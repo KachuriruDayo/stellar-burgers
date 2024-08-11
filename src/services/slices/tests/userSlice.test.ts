@@ -1,5 +1,4 @@
-import { Login } from './../../../pages/login/login';
-import { userSlice } from '../userSlice';
+import { userSlice, initialState} from '../userSlice';
 import { RequestStatus } from '../../../utils/types';
 import { getCookie } from '../../../utils/cookie';
 import {
@@ -9,15 +8,6 @@ import {
   registerUser,
   logout
 } from '../../thunk/user';
-
-const initialState = {
-  userData: {
-    name: '',
-    email: ''
-  },
-  isAuth: false,
-  requestStatus: RequestStatus.Idle
-};
 
 const userReducer = userSlice.reducer;
 

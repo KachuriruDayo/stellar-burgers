@@ -1,16 +1,6 @@
-import { feedsSlice } from '../feedsSlice';
+import { feedsSlice, initialState } from '../feedsSlice';
 import { getFeeds } from '../../thunk/feeds';
 import { RequestStatus } from '../../../utils/types';
-import { error } from 'console';
-
-const initialState = {
-  data: {
-    orders: [],
-    total: 0,
-    totalToday: 0
-  },
-  requestStatus: RequestStatus.Idle
-};
 
 const feedsReducer = feedsSlice.reducer;
 

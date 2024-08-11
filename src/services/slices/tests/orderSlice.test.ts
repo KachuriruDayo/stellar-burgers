@@ -1,15 +1,8 @@
 import { getOrderByNumber, getOrders } from '../../thunk/order';
-import { ordersSlice } from '../orderSlice';
+import { ordersSlice, initialState } from '../orderSlice';
 import { RequestStatus } from '../../../utils/types';
 
 const ordersReducer = ordersSlice.reducer;
-
-const initialState = {
-  userOrders: [],
-  userOrdersRequest: RequestStatus.Idle,
-  orderByNum: undefined,
-  orderByNumRequest: RequestStatus.Idle
-};
 
 const mockRequestData = [
   {

@@ -15,7 +15,7 @@ type TUserData = {
   requestStatus: RequestStatus;
 };
 
-const initialState: TUserData = {
+export const initialState: TUserData = {
   userData: {
     name: '',
     email: ''
