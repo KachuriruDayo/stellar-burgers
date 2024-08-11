@@ -56,7 +56,7 @@ describe('correctly work modals', function() {
     cy.contains(o.ingredientModal).should('exist')
     cy.get(`[data-cy='modal-close-button']`).click()
 
-    cy.contains('Ингредиент').should('not.exist')
+    cy.contains(o.ingredientModal).should('not.exist')
   })
 
   it('should close modal by click on modal layout', function() {
