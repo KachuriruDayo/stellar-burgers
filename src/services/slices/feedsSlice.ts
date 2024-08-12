@@ -1,14 +1,13 @@
 import { getFeeds } from './../thunk/feeds';
 import { createSlice } from '@reduxjs/toolkit';
-import { RequestStatus } from '@utils-types';
-import { TOrdersData } from '@utils-types';
+import { RequestStatus, TOrdersData } from '../../utils/types';
 
 type TFeedsState = {
   data: TOrdersData;
   requestStatus: RequestStatus;
 };
 
-const initialState: TFeedsState = {
+export const initialState: TFeedsState = {
   data: {
     orders: [],
     total: 0,
@@ -32,6 +31,9 @@ export const feedsSlice = createSlice({
       .addCase(getFeeds.fulfilled, (state, action) => {
         state.requestStatus = RequestStatus.Success;
         state.data = action.payload;
+      })
+      .addCase(getFeeds.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
       });
   }
 });

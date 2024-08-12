@@ -1,14 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getIngredients } from '../thunk/ingredients';
-import { RequestStatus } from '@utils-types';
-import { TIngredient } from '@utils-types';
+import { RequestStatus, TIngredient } from '../../utils/types';
 
 type TIngredientsState = {
   ingredients: Array<TIngredient>;
   requestStatus: RequestStatus;
 };
 
-const initialState: TIngredientsState = {
+export const initialState: TIngredientsState = {
   ingredients: [],
   requestStatus: RequestStatus.Idle
 };
@@ -28,6 +27,9 @@ export const ingredientsSlice = createSlice({
       .addCase(getIngredients.fulfilled, (state, action) => {
         state.requestStatus = RequestStatus.Success;
         state.ingredients = action.payload;
+      })
+      .addCase(getIngredients.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
       });
   }
 });

@@ -3,7 +3,7 @@ import {
   TIngredient,
   TConstructorIngredient,
   TMoveIngredient
-} from '@utils-types';
+} from '../../utils/types';
 import { v4 as uuid } from 'uuid';
 
 type TIngredientsState = {
@@ -11,7 +11,7 @@ type TIngredientsState = {
   ingredients: Array<TConstructorIngredient>;
 };
 
-const initialState: TIngredientsState = {
+export const initialState: TIngredientsState = {
   bun: null,
   ingredients: []
 };

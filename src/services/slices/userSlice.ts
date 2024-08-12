@@ -6,22 +6,22 @@ import {
   loginUser
 } from './../thunk/user';
 import { setCookie, deleteCookie } from '../../utils/cookie';
-import { TUser, TOrder } from './../../utils/types';
+import { TUser, RequestStatus } from './../../utils/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 type TUserData = {
   userData: TUser;
-  orders: TOrder[];
   isAuth: boolean;
+  requestStatus: RequestStatus;
 };
 
-let initialState: TUserData = {
+export const initialState: TUserData = {
   userData: {
     name: '',
     email: ''
   },
-  orders: [],
-  isAuth: false
+  isAuth: false,
+  requestStatus: RequestStatus.Idle
 };
 
 export const userSlice = createSlice({
@@ -36,42 +36,62 @@ export const userSlice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         state.userData = action.payload.user;
         state.isAuth = true;
+        state.requestStatus = RequestStatus.Success;
       })
-      .addCase(getUser.rejected, (state, action) => {
-        console.log(action.payload);
+      .addCase(getUser.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
+      })
+      .addCase(getUser.pending, (state) => {
+        state.requestStatus = RequestStatus.Loading;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         setCookie('accessToken', action.payload.accessToken);
         localStorage.setItem('refreshToken', action.payload.refreshToken);
         state.userData = action.payload.user;
         state.isAuth = true;
+        state.requestStatus = RequestStatus.Success;
       })
-      .addCase(registerUser.rejected, (state, action) => {
-        console.log(action.payload);
+      .addCase(registerUser.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
+      })
+      .addCase(registerUser.pending, (state) => {
+        state.requestStatus = RequestStatus.Loading;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         setCookie('accessToken', action.payload.accessToken);
         localStorage.setItem('refreshToken', action.payload.refreshToken);
         state.userData = action.payload.user;
         state.isAuth = true;
+        state.requestStatus = RequestStatus.Success;
       })
-      .addCase(loginUser.rejected, (state, action) => {
-        console.log(action.payload);
+      .addCase(loginUser.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
+      })
+      .addCase(loginUser.pending, (state) => {
+        state.requestStatus = RequestStatus.Loading;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.userData = action.payload.user;
+        state.requestStatus = RequestStatus.Success;
       })
-      .addCase(updateUser.rejected, (state, action) => {
-        console.log(action.payload);
+      .addCase(updateUser.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.requestStatus = RequestStatus.Loading;
       })
       .addCase(logout.fulfilled, (state) => {
         localStorage.clear();
         deleteCookie('accessToken');
         state.userData = { name: '', email: '' };
         state.isAuth = false;
+        state.requestStatus = RequestStatus.Idle;
       })
-      .addCase(logout.rejected, (state, action) => {
-        console.log(action.payload);
+      .addCase(logout.rejected, (state) => {
+        state.requestStatus = RequestStatus.Failed;
+      })
+      .addCase(logout.pending, (state) => {
+        state.requestStatus = RequestStatus.Loading;
       });
   }
 });
